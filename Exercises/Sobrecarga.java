@@ -1,51 +1,29 @@
 package Exercises;
 
 public class Sobrecarga {
-
-    String nombre;
-    String materia;
-    int calificacion;
+    private final String nombre;
+    private final String materia;
+    private final int calificacion;
 
     public Sobrecarga(String nombre, String materia, int calificacion) {
         this.nombre = nombre;
         this.materia = materia;
         this.calificacion = calificacion;
     }
-    public String reprobar(){
-        if (this.calificacion>5)
-            return "true";
-        else
-            return "false";
-            
+
+    protected String getNombre() {
+        return nombre;
     }
 
-    /**
-     * Profesor
-     */
-    class Profesor extends Sobrecarga{
-        public Profesor(String nombre, String materia, int calificacion){
-            super(nombre, materia, calificacion);
-        }
-        public String reprobar(){
-            if(this.calificacion>5)
-                return ">:) Sacaste "+this.calificacion+" en " + this.materia;
-            else
-                return ":(";
-        }
+    protected String getMateria() {
+        return materia;
     }
 
-    /**
-     * Alumno
-     */
-    class Alumno extends Sobrecarga{
-        public Alumno(String nombre, String materia, int calificacion){
-            super(nombre, materia, calificacion);
-        }
-        public String reprobar(){
-
-        }
-        
+    protected int getCalificacion() {
+        return calificacion;
     }
 
+    public String reprobar() {
+        return calificacion > 5 ? "true" : "false";
+    }
 }
-

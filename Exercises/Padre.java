@@ -1,27 +1,19 @@
 package Exercises;
 
 public class Padre {
-    String apellido;
-    public Padre(String apellido){
+    private final String apellido;
+
+    public Padre(String apellido) {
         this.apellido = apellido;
     }
-   
-}
-public class Hijo extends Padre{
-    String nombre;
-    public Hijo(String nombre, String apellido){
-        super(apellido);
-        this.nombre=nombre;
+
+    public String getApellido() {
+        return apellido;
     }
-}
-public class EspirituSanto extends Hijo {
-    String apellidoReal;
-    public EspirituSanto(String nombre, String apellido, String apellidoReal){
-        super(nombre, apellido);
-        this.apellidoReal = apellidoReal;
+
+    public boolean test() {
+        Hijo hijo = new Hijo("Juan", apellido);
+        EspirituSanto espiritu = new EspirituSanto(hijo.getNombre(), apellido, "Lopez");
+        return espiritu.pruebaPaternidad();
     }
-    public Boolean pruebaParternidad(){
-        return this.apellido == this.apellidoReal;
-    }
-    
 }
